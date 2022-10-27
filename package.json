@@ -1,0 +1,16 @@
+{
+  "name": "n4nerds",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite --open",
+    "build": "vite build ",
+    "preview": "vite preview",
+    "tailwind": "npx tailwindcss -i ./src/style.css -o ./dist/output.css --watch"
+  },
+  "devDependencies": {
+    "tailwindcss": "^3.2.1",
+    "vite": "^3.1.0"
+  }
+}
