@@ -6,9 +6,21 @@ export default class Search {
     this.type = type;
   }
   async getFact() {
-    const response = await axios(
-      `http://numbersapi.com/${this.number}/${this.type}?json`
-    );
+    let response;
+    try {
+      response = await axios(
+        `http://numbersapi.com/${this.number}/${this.type}?json`
+      );
+    } catch (error) {
+      alert(error);
+    }
     return response.data;
+  }
+  // TODO it is for test and debugging only
+  getNumber() {
+    return this.number;
+  }
+  getType() {
+    return this.type;
   }
 }
