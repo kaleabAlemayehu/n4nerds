@@ -9,8 +9,8 @@ const state = {
 };
 
 const randomHandler = async (e) => {
-  const type = getType();
-  const randomSearch = new Search('random', type);
+  e.preventDefault();
+  const randomSearch = new Search('random', state.type);
   console.log(await randomSearch.getFact());
 };
 
@@ -30,4 +30,17 @@ types.forEach((type) => {
   ['click', 'touchstart'].forEach((e) => {
     type.addEventListener(e, typeHandler);
   });
+});
+
+// submit controller
+const submitHandler = async (e) => {
+  e.preventDefault();
+  state.number = dom.input.value;
+  if (state.number || state.number === 0) {
+    const submitSearch = new Search(state.number, state.type);
+    console.log(await submitSearch.getFact());
+  }
+};
+['click', 'touchstart'].forEach((e) => {
+  dom.submit.addEventListener(e, submitHandler);
 });

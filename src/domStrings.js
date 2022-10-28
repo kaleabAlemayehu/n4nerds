@@ -6,4 +6,5 @@ export const dom = {
   trivia: document.getElementById('trivia'),
   year: document.getElementById('year'),
   type: document.getElementsByClassName('type'),
+  input: document.getElementById('number'),
 };
