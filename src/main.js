@@ -1,19 +1,5 @@
-const btn = document.getElementById('random');
-const labelNumber = document.getElementById('number-label');
-const events = ['click', 'touchstart'];
-const randomNum = () => {
-  return Math.round(Math.random() * 10000);
-};
-const handler = (e) => {
-  e.preventDefault();
-  document.getElementById('number').value = randomNum();
-};
-events.forEach((e) => btn.addEventListener(e, handler));
+import Search from './models/Search';
 
-const submitBtn = document.getElementById('submit');
+const res = new Search(32, 'math');
 
-submitBtn.addEventListener('click', (e) => {
-  e.preventDefault();
-  console.log(document.getElementById('number').value);
-  document.getElementById('number').value = '';
-});
+res.getFact();

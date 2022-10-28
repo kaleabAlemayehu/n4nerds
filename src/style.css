@@ -1,3 +1,10 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.selected {
+  border: 2px solid #4b5563;
+  background: #fff;
+  color: #4b5563;
+  box-shadow: #4b5563 1px 1px;
+}
