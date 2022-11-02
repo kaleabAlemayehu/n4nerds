@@ -1,17 +1,26 @@
 import Search from './models/Search';
 import { dom } from './domStrings';
+import * as searchView from './views/searchView';
 
 // change HTML Collection into array to make it iterable
 const types = Array.from(dom.type);
 const state = {
   type: '',
   number: '',
+  fact: '',
 };
 
 const randomHandler = async (e) => {
   e.preventDefault();
   const randomSearch = new Search('random', state.type);
-  console.log(await randomSearch.getFact());
+  try {
+    state.fact = await randomSearch.getFact();
+    if (state.fact.found) {
+      searchView.renderFact(state.fact.text);
+    }
+  } catch (error) {
+    console.error(error);
+  }
 };
 
 ['click', 'touchstart'].forEach((e) => {
@@ -38,7 +47,12 @@ const submitHandler = async (e) => {
   state.number = dom.input.value;
   if (state.number || state.number === 0) {
     const submitSearch = new Search(state.number, state.type);
-    console.log(await submitSearch.getFact());
+    try {
+      state.fact = await submitSearch.getFact();
+      // searchView.renderFact(state.fact);
+    } catch (error) {
+      console.error(error);
+    }
   }
 };
 ['click', 'touchstart'].forEach((e) => {

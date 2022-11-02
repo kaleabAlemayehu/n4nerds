@@ -1,4 +1,6 @@
 /** @type {import('tailwindcss').Config} */
+const defaultTheme = require('tailwindcss/defaultTheme');
+
 module.exports = {
   content: ['./index.html', './src/**/*.js'],
   theme: {
@@ -11,6 +13,9 @@ module.exports = {
       },
       left: {
         ls: '0.23rem',
+      },
+      fontFamily: {
+        Nunito: ['"Nunito"', ...defaultTheme.fontFamily.sans],
       },
     },
   },

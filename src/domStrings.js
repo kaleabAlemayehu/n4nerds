@@ -7,4 +7,5 @@ export const dom = {
   year: document.getElementById('year'),
   type: document.getElementsByClassName('type'),
   input: document.getElementById('number'),
+  fact: document.getElementById('fact'),
 };
