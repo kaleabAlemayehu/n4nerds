@@ -1,6 +1,7 @@
 import Search from './models/Search';
 import { dom } from './domStrings';
 import * as searchView from './views/searchView';
+import { typeSelector } from './views/randomizeTypeView';
 
 // change HTML Collection into array to make it iterable
 const types = Array.from(dom.type);
@@ -15,6 +16,11 @@ const init = () => {
   state.number = '';
 };
 const randomHandler = async (e) => {
+  if (!state.type) {
+    var types = ['math', 'trivia', 'date', 'year'];
+    state.type = types[Math.floor(Math.random() * 4)];
+    typeSelector(state.type);
+  }
   e.preventDefault();
   const randomSearch = new Search('random', state.type);
   try {
