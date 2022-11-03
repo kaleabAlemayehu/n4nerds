@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 export default class Search {
-  constructor(number, type = 'trivia') {
+  constructor(number, type) {
     this.number = number;
     this.type = type;
   }
@@ -15,12 +15,5 @@ export default class Search {
     } catch (error) {
       alert(error);
     }
-  }
-  // TODO it is for test and debugging only
-  getNumber() {
-    return this.number;
-  }
-  getType() {
-    return this.type;
   }
 }

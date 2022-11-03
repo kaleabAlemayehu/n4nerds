@@ -6,7 +6,7 @@ export const typeSelector = (type) => {
   }
   for (let i = 0; i < types.length; i++) {
     if (types[i].dataset.id === type) {
-      types[i].classList.toggle('selected');
+      types[i].classList.add('selected');
     }
   }
 };

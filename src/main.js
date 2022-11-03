@@ -30,7 +30,7 @@ const randomHandler = async (e) => {
       init();
     }
   } catch (error) {
-    console.error(error);
+    alert(error);
   }
 };
 
@@ -61,9 +61,9 @@ const submitHandler = async (e) => {
       const submitSearch = new Search(state.number, state.type);
       try {
         state.fact = await submitSearch.getFact();
-        searchView.renderFact(state.fact);
+        searchView.renderFact(state.fact.text);
       } catch (error) {
-        console.error(error);
+        alert(error);
       }
     } else {
       searchView.numberError();
@@ -77,3 +77,6 @@ const submitHandler = async (e) => {
 });
 
 init();
+
+// zero on date type
+// add rather than toggle on typehandler
