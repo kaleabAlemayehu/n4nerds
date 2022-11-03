@@ -9,7 +9,11 @@ const state = {
   number: '',
   fact: '',
 };
-
+const init = () => {
+  state.fact = '';
+  state.type = '';
+  state.number = '';
+};
 const randomHandler = async (e) => {
   e.preventDefault();
   const randomSearch = new Search('random', state.type);
@@ -17,6 +21,7 @@ const randomHandler = async (e) => {
     state.fact = await randomSearch.getFact();
     if (state.fact.found) {
       searchView.renderFact(state.fact.text);
+      init();
     }
   } catch (error) {
     console.error(error);
@@ -45,16 +50,24 @@ types.forEach((type) => {
 const submitHandler = async (e) => {
   e.preventDefault();
   state.number = dom.input.value;
-  if (state.number || state.number === 0) {
-    const submitSearch = new Search(state.number, state.type);
-    try {
-      state.fact = await submitSearch.getFact();
-      // searchView.renderFact(state.fact);
-    } catch (error) {
-      console.error(error);
+  if (state.type) {
+    if (state.number || state.number === 0) {
+      const submitSearch = new Search(state.number, state.type);
+      try {
+        state.fact = await submitSearch.getFact();
+        searchView.renderFact(state.fact);
+      } catch (error) {
+        console.error(error);
+      }
+    } else {
+      searchView.numberError();
     }
+  } else {
+    searchView.typeError();
   }
 };
 ['click', 'touchstart'].forEach((e) => {
   dom.submit.addEventListener(e, submitHandler);
 });
+
+init();
